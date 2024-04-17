@@ -2,7 +2,24 @@
 https://code.visualstudio.com/docs/python/tutorial-django
 
 # in env
+python3 -m venv .venv
 source .venv/bin/activate
 
-# create user
+# install django
+python -m pip install --upgrade pip
+python -m pip install django
+
+# create django project
+django-admin startproject opsweb .
+
+# create empty database
+python manage.py migrate
+
+# run project
+python manage.py runserver
+
+# create project user
 python manage.py createsuperuser
+
+# create a django app
+python manage.py startapp hello
