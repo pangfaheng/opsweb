@@ -1,2 +1,8 @@
 # doc
 https://code.visualstudio.com/docs/python/tutorial-django
+
+# in env
+source .venv/bin/activate
+
+# create user
+python manage.py createsuperuser
