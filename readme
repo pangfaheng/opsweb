@@ -6,20 +6,29 @@ python3 -m venv .venv
 source .venv/bin/activate
 
 # install django
-python -m pip install --upgrade pip
-python -m pip install django
+python3 -m pip install --upgrade pip
+python3 -m pip install django
 
 # create django project
 django-admin startproject opsweb .
 
 # create empty database
-python manage.py migrate
+python3 manage.py migrate
 
 # run project
-python manage.py runserver
+python3 manage.py runserver
 
 # create project user
-python manage.py createsuperuser
+python3 manage.py createsuperuser
+
+# 更新静态文件
+python3 manage.py collectstatic
 
 # create a django app
-python manage.py startapp hello
+python3 manage.py startapp sysadmin
+
+## 创建一个app需要修改的配置
+opsweb.settings.INSTALLED_APPS
+opsweb.urls.urlpatterns
+app.urls.urlpatterns
+app.views.def
