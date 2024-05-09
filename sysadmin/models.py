@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class sysadmin_instance_cloud_info(models.Model):
+class instance_cloud_info(models.Model):
     id              = models.BigAutoField(primary_key=True)
     cloud_iam_uid   = models.CharField(max_length=300)
     cloud_iam_name  = models.CharField(max_length=300)
@@ -14,7 +14,7 @@ class sysadmin_instance_cloud_info(models.Model):
         ]
 
 
-class sysadmin_instance_base_info(models.Model):
+class instance_base_info(models.Model):
     id                        = models.BigAutoField(primary_key=True)
     instance_id               = models.CharField(max_length=100, unique=True)
     instance_name             = models.CharField(max_length=100)
@@ -26,7 +26,7 @@ class sysadmin_instance_base_info(models.Model):
     update_time               = models.DateTimeField(auto_now=True)
 
 
-class sysadmin_instance_tags_info(models.Model):
+class instance_tags_info(models.Model):
     ENVIRONMENT = "Environment"
     PROJECT     = "Project"
     SERVICE     = "Service"
@@ -66,7 +66,7 @@ class sysadmin_instance_tags_info(models.Model):
         ]
 
 
-class sysadmin_instance_data_disk_info(models.Model):
+class instance_data_disk_info(models.Model):
     id                        = models.BigAutoField(primary_key=True)
     instance_id               = models.CharField(max_length=100)
     instance_data_disk_region = models.CharField(max_length=100)
@@ -83,7 +83,7 @@ class sysadmin_instance_data_disk_info(models.Model):
         ]
 
 
-class sysadmin_instance_connect_info(models.Model):
+class instance_connect_info(models.Model):
     id          = models.BigAutoField(primary_key=True)
     instance_id = models.CharField(max_length=100)
     address     = models.CharField(max_length=100)
