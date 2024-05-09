@@ -3,7 +3,14 @@
     服务器列表
 {% endblock %}
 {% block content %}
-<table>
-
-</table>
+<body>
+    <h1>My Data</h1>
+    <ul>
+        {% for item in data %}
+            <li>实例id: {{ item.instance_id }}</li>
+            <li>实例名称: {{ item.instance_name }}</li>
+            <li>sss: {{ ppa }}</li>
+        {% endfor %}
+    </ul>
+</body>
 {% endblock %}
