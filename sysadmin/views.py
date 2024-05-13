@@ -6,5 +6,4 @@ def sysadmin_home(request):
 
 def sysadmin_server_assets(request):
     data = instance_base_info.objects.all()
-    ppa = 'hahaha'
-    return render(request, "sysadmin/sysadmin_server_assets.html", {'data': data, 'ppa': ppa})
+    return render(request, "sysadmin/sysadmin_server_assets.html", {'data': data,})
