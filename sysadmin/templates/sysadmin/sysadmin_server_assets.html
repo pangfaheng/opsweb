@@ -4,12 +4,28 @@
 {% endblock %}
 {% block content %}
 <body>
-    <h1>My Data</h1>
-    <ul>
-        {% for item in data %}
-            <li>实例id: {{ item.instance_id }}</li>
-            <li>实例名称: {{ item.instance_name }}</li>
-        {% endfor %}
-    </ul>
+    <div id="header_server_total" class="box">
+        <h2 style="margin-bottom:0;">实时数据</h2>
+    </div>
+    <div>
+        <h3 style="margin-bottom:0;"><span class="">实例总数: {{ server_total }}</span></h3>
+    </div>
+    <h2></h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>实例id</th>
+                <th>实例名称</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% for item in data %}
+                    <td>{{ item.instance_id }}</td>
+                    <td>{{ item.instance_name }}</td>
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
 </body>
 {% endblock %}

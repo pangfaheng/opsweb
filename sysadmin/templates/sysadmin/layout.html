@@ -5,19 +5,20 @@
     <title>{% block title %}{% endblock %}</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'sysadmin/site.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'sysadmin/animate_min.css' %}"/>
 </head>
 
 <body>
 <div class="navbar">
-    <a href="{% url 'sysadmin_home' %}" class="navbar-item">sysadmin_home</a>
-    <a href="{% url 'sysadmin_server_assets' %}" class="navbar-item">sysadmin_server_assets</a>
+    <a href="{% url 'sysadmin_home' %}" class="navbar-item">主目录</a>
+    <a href="{% url 'sysadmin_server_assets' %}" class="navbar-item">服务器列表</a>
 </div>
 
 <div class="body-content">
     {% block content %}{% endblock %}
     <hr/>
     <footer>
-        <p>&copy; 2024</p>
+        <p>&copy;2024</p>
     </footer>
 </div>
 </body>
