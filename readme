@@ -16,6 +16,9 @@ django-admin startproject opsweb .
 python3 manage.py makemigrations
 python3 manage.py migrate
 
+# 临时写入数据
+INSERT INTO sysadmin_instance_base_info (instance_id,instance_name,instance_cpu_size,instance_memory_size,instance_system_disk_type,instance_system_disk_size,create_time,update_time) VALUES ("ins-xxxxxx","ops-lo-vm-test-001",4,8192,"SSD","50","2024-05-09 16:43:11","2024-05-09 16:43:11");
+
 # run project
 python3 manage.py runserver
 

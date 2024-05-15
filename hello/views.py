@@ -36,6 +36,6 @@ def log_message(request):
             message = form.save(commit=False)
             message.log_date = datetime.now()
             message.save()
-            return redirect("home")
+            return redirect("herro_home")
     else:
         return render(request, "hello/log_message.html", {"form": form})

@@ -4,10 +4,10 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
 urlpatterns = [
-    path("", views.home, name="home"),
-    path("hello/<name>", views.hello_there, name="hello_there"),
-    path("about/", views.about, name="about"),
-    path("contact/", views.contact, name="contact"),
-    path("log/", views.log_message, name="log"),
+    path("hello", views.home, name="herro_home"),
+    path("hello/<name>", views.hello_there, name="hello_home_there"),
+    path("hello/about/", views.about, name="herro_about"),
+    path("hello/contact/", views.contact, name="herro_contact"),
+    path("hello/log/", views.log_message, name="herro_log"),
 ]
 urlpatterns += staticfiles_urlpatterns()

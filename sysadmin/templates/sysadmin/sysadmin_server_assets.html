@@ -10,7 +10,6 @@
     <div>
         <h3 style="margin-bottom:0;"><span class="">实例总数: {{ server_total }}</span></h3>
     </div>
-    <h2></h2>
     <table border="1">
         <thead>
             <tr>
@@ -19,12 +18,12 @@
             </tr>
         </thead>
         <tbody>
+            {% for item in data %}
             <tr>
-                {% for item in data %}
-                    <td>{{ item.instance_id }}</td>
-                    <td>{{ item.instance_name }}</td>
-                {% endfor %}
+                <td>{{ item.instance_id }}</td>
+                <td>{{ item.instance_name }}</td>
             </tr>
+            {% endfor %}
         </tbody>
     </table>
 </body>
