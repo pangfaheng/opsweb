@@ -5,6 +5,8 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path("", views.sysadmin_home, name="sysadmin_home"),
     path("server/", views.sysadmin_server_assets, name="sysadmin_server_assets"),
-    path("server2/", views.sysadmin_server_assets_2, name="sysadmin_server_assets_2"),
+
+    # 示例：分页链接
+    path("example/previous", views.example_previous_001, name="example_previous_001"),
 ]
 urlpatterns += staticfiles_urlpatterns()

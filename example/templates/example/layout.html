@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>{% block title %}{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'example/site.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'example/animate_min.css' %}"/>
+</head>
+
+<body>
+<div class="navbar">
+    <a href="{% url 'example_home' %}" class="navbar-item">主目录</a>
+    <a href="{% url 'example_previous_001' %}" class="navbar-item">示例-分页</a>
+</div>
+
+<div class="body-content">
+    {% block content %}
+    {% endblock %}
+    <hr/>
+    <footer>
+        <p>&copy;2024</p>
+    </footer>
+</div>
+</body>
+</html>
