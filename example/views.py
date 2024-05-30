@@ -14,10 +14,10 @@ def example_home(request):
 def __server_assets_total(data):
     return len(data)
 
-def example_previous_001(request):
+def example_previous(request):
     queryset = instance_base_info.objects.filter().order_by('id')
     data = instance_base_info.objects.all()
-    paginator = Paginator(queryset, 10)
+    paginator = Paginator(queryset, 5)
     page = request.GET.get('page')
     try:
         page_obj = paginator.page(page)
@@ -27,7 +27,7 @@ def example_previous_001(request):
         page_obj = paginator.page(paginator.num_pages)
     is_paginated = True if paginator.num_pages > 1 else False
     context = {'page_obj': page_obj, 'is_paginated': is_paginated, 'data': data, 'server_total': __server_assets_total(data = data)}
-    return render(request, 'example/previous_001.html', context)
+    return render(request, 'example/previous.html', context)
 
 def example_file_manager(request):
     return render(request, 'example/file_manager.html')

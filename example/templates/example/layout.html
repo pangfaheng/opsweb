@@ -9,19 +9,18 @@
 </head>
 
 <body>
-<div class="navbar">
-    <a href="{% url 'example_home' %}" class="navbar-item">主目录</a>
-    <a href="{% url 'example_previous_001' %}" class="navbar-item">示例-分页</a>
-    <a href="{% url 'example_data_sync' %}" class="navbar-item">示例：数据同步</a>
-</div>
-
-<div class="body-content">
-    {% block content %}
-    {% endblock %}
-    <hr/>
-    <footer>
-        <p>&copy;2024</p>
-    </footer>
-</div>
+    <div class="navbar">
+        <a href="{% url 'example_home' %}" class="navbar-item">主目录</a>
+        <a href="{% url 'example_previous' %}" class="navbar-item">分页管理</a>
+        <a href="{% url 'example_file_manager' %}" class="navbar-item">文件管理</a>
+    </div>
+    <div class="body-content">
+        {% block content %}
+        {% endblock %}
+        <hr/>
+        <footer>
+            <p>&copy;2024</p>
+        </footer>
+    </div>
 </body>
 </html>

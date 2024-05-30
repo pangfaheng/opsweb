@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Upload File</title>
-</head>
-<body>
-    <h1>Upload File</h1>
-    <form action="{% url 'example_file_manager_upload_file' %}" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <input type="file" name="upload">
-        <button type="submit">Upload</button>
-    </form>
-    <a href="{% url 'example_file_manager' %}">Back to Home</a>
-</body>
+    <head>
+        <title>Upload File</title>
+    </head>
+    <body>
+        <h1>Upload File</h1>
+        <form action="{% url 'example_file_manager_upload_file' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="upload">
+            <button type="submit">Upload</button>
+        </form>
+        <a href="{% url 'example_file_manager' %}">Back to Home</a>
+    </body>
 </html>

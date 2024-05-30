@@ -1,22 +1,20 @@
 {% extends "example/layout.html" %}
-{% block title %} Example {% endblock %}
+{% block title %}Example{% endblock %}
 {% block content %}
 <!DOCTYPE html>
 <html>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'example/site.css' %}"/>
-<head>
-    <title> Example </title>
-</head>
-<body>
-    <h1>数据同步</h1>
-    <form action="{% url 'example_file_manager_create_file' %}" method="get">
-        <button type="submit">数据同步-创建测试文件</button>
-    </form>
-    <form action="{% url 'example_file_manager_download_file' %}" method="get">
-        <button type="submit">数据同步-下载测试文件</button>
-    </form>
-    <a href="{% url 'example_file_manager_upload_file' %}">数据同步-上传测试文件</a>
-</body>
+    <head>
+        <title>Example</title>
+    </head>
+    <body>
+        <h1>文件管理</h1>
+        <form action="{% url 'example_file_manager_create_file' %}" method="get">
+            <button type="submit">创建测试文件</button>
+        </form>
+        <form action="{% url 'example_file_manager_download_file' %}" method="get">
+            <button type="submit">下载测试文件</button>
+        </form>
+        <a href="{% url 'example_file_manager_upload_file' %}">上传测试文件</a>
+    </body>
 </html>
 {% endblock %}

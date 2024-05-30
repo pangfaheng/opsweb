@@ -5,7 +5,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path("", views.example_home, name="example_home"),
     # 示例：分页链接
-    path("previous", views.example_previous_001, name="example_previous_001"),
+    path("previous", views.example_previous, name="example_previous"),
     # 示例：上传、下载文件
     path('file_manager', views.example_file_manager, name='example_file_manager'),
     path('file_manager/create_file', views.example_file_manager_create_file, name='example_file_manager_create_file'),
