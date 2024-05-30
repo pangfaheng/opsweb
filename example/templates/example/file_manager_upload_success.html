@@ -1,0 +1,15 @@
+{% extends "example/layout.html" %}
+{% block title %} Example {% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Example</title>
+</head>
+<body>
+    <h1>Upload Success</h1>
+    <p>文件上传成功: <a href="{{ file_url }}">{{ file_url }}</a></p>
+    <a href="{% url 'example_file_manager' %}">返回</a>
+</body>
+</html>
+{% endblock %}
