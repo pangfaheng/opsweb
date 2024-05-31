@@ -9,12 +9,12 @@
     <body>
         <h1>文件管理</h1>
         <form action="{% url 'example_file_manager_create_file' %}" method="get">
-            <button type="submit">创建测试文件</button>
+            <button type="submit">创建文件</button>
         </form>
         <form action="{% url 'example_file_manager_download_file' %}" method="get">
-            <button type="submit">下载测试文件</button>
+            <button type="submit">下载文件</button>
         </form>
-        <a href="{% url 'example_file_manager_upload_file' %}">上传测试文件</a>
+        <a href="{% url 'example_file_manager_upload_file' %}">上传文件</a>
     </body>
 </html>
 {% endblock %}

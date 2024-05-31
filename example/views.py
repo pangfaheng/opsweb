@@ -6,6 +6,7 @@ from django.conf import settings
 from django.http import HttpResponse, FileResponse
 from django.core.files.storage import FileSystemStorage
 from django.shortcuts import redirect
+from django.http import Http404
 
 
 def example_home(request):
@@ -45,6 +46,7 @@ def example_file_manager_download_file(request):
         response['Content-Disposition'] = 'attachment; filename="test.txt"'
         return response
     else:
+        return Http404("File not found.")
         return HttpResponse("File not found.")
 
 def example_file_manager_upload_file(request):
