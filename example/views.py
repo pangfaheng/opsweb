@@ -41,40 +41,39 @@ def previous(request):
 
 
 def file_manager(request):
-    return render(request, "example/file_manager.html")
+    context = {}
+    files = os.listdir(settings.MEDIA_ROOT)
+    context["files"] = files
+    return render(request, "example/file_manager.html", context)
 
 
-def file_manager_create_file(request):
-    file_path = os.path.join(settings.MEDIA_ROOT, "test.txt")
-    with open(file_path, "w") as f:
-        f.write("123")
-    return render(request, "example/file_manager.html")
-
-
-def file_manager_download_file(request):
-    file_path = os.path.join(settings.MEDIA_ROOT, "test.txt")
+def file_manager_download(request, filename):
+    file_path = os.path.join(settings.MEDIA_ROOT, filename)
     if os.path.exists(file_path):
-        response = FileResponse(open(file_path, "rb"))
-        response["Content-Disposition"] = 'attachment; filename="test.txt"'
+        with open(file_path, "rb") as file:
+            response = HttpResponse(
+                file.read(), content_type="application/octet-stream"
+            )
+            response[
+                "Content-Disposition"
+            ] = f"attachment; filename={os.path.basename(file_path)}"
         return response
     else:
         return Http404("File not found.")
 
 
-def file_manager_upload_file(request):
+def file_manager_upload(request):
     if request.method == "POST" and request.FILES["upload"]:
         upload = request.FILES["upload"]
         fss = FileSystemStorage()
         file = fss.save(upload.name, upload)
         file_url = fss.url(file)
-        return redirect("file_manager_upload_success", file_url=file_url)
-    return render(request, "example/file_manager_upload_file.html")
+        return redirect("file_manager_success", file_url=file_url)
+    return render(request, "example/file_manager_upload.html")
 
 
-def file_manager_upload_success(request, file_url):
-    return render(
-        request, "example/file_manager_upload_success.html", {"file_url": file_url}
-    )
+def file_manager_success(request, file_url):
+    return render(request, "example/file_manager_success.html", {"file_url": file_url})
 
 
 def task_list(request):

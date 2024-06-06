@@ -7,14 +7,20 @@
         <title>Example</title>
     </head>
     <body>
-        <h1>文件管理</h1>
-        <form action="{% url 'file_manager_create_file' %}" method="get">
-            <button type="submit">创建文件</button>
-        </form>
-        <form action="{% url 'file_manager_download_file' %}" method="get">
-            <button type="submit">下载文件</button>
-        </form>
-        <a href="{% url 'file_manager_upload_file' %}">上传文件</a>
+
+        <h1>Download File</h1>
+        {% for file in files %}
+        <p>
+            <a>{{ file }}</a>
+            <a href="{% url 'file_manager_download' filename=file %}">
+                <button type="submit">下载文件</button>
+            </a>
+        </p>
+        {% endfor %}
+
+        <h1>Upload File</h1>
+        <a href="{% url 'file_manager_upload' %}">上传文件</a>
+        
     </body>
 </html>
 {% endblock %}
