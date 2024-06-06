@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class instance_base_info(models.Model):
+class InstanceBaseInfo(models.Model):
     id = models.BigAutoField(primary_key=True)
     instance_id = models.CharField(max_length=100, unique=True)
     instance_name = models.CharField(max_length=100)
@@ -13,16 +13,16 @@ class instance_base_info(models.Model):
     update_time = models.DateTimeField(auto_now=True)
 
 
-class single_task_status(models.TextChoices):
+class TaskStatus(models.TextChoices):
     UNSTARTED = "u", "Not Started"
     EXECUTING = "e", "Executing"
     FINISHED = "f", "Finished"
 
 
-class single_task_task(models.Model):
+class TaskList(models.Model):
     name = models.CharField(verbose_name="Task Name", max_length=120, unique=True)
     status = models.CharField(
-        verbose_name="Task Status", max_length=1, choices=single_task_status.choices
+        verbose_name="Task Status", max_length=1, choices=TaskStatus.choices
     )
 
     def __str__(self):

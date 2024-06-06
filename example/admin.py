@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from .models import instance_base_info
+from .models import InstanceBaseInfo, TaskList
 
 # Register your models here.
-admin.site.register(instance_base_info)
+admin.site.register(InstanceBaseInfo)
+admin.site.register(TaskList)

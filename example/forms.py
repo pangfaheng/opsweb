@@ -1,8 +1,8 @@
-from .models import single_task_task
+from .models import TaskList
 from django import forms
 
 
-class single_task_form(forms.ModelForm):
+class TaskListForm(forms.ModelForm):
     class Meta:
-        model = single_task_task
+        model = TaskList
         fields = "__all__"
