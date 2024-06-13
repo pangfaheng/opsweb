@@ -76,47 +76,64 @@ class TerraformEnvironmentTemplate(models.Model):
     id = models.BigAutoField(primary_key=True)
     environment_context = models.TextField()
     file_name = models.CharField(max_length=100)
-    template_id = models.CharField(max_length=100)
+    remark = models.CharField(max_length=300)
+    env_template_id = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.template_id
+        text = self.file_name + " - " + self.remark
+        return text
 
 
-class TerraformEnvironments(models.Model):
+class TerraformEnvironment(models.Model):
     id = models.BigAutoField(primary_key=True)
     cloud = models.CharField(max_length=100)
     project = models.CharField(max_length=100)
-    version = models.CharField(max_length=100)
     region = models.CharField(max_length=100)
     source = models.CharField(max_length=100)
-    backend_object_type = models.CharField(max_length=100)
-    backend_object_name = models.CharField(max_length=100)
-    template_id = models.CharField(max_length=100)
+    version = models.CharField(max_length=100)
+    backend_type = models.CharField(max_length=100)
+    backend_bucket = models.CharField(max_length=100)
+    backend_region = models.CharField(max_length=100)
+    env_template_id = models.CharField(max_length=100)
     env_id = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.env_id
+        text = "项目: " + self.project + ", 云服务: " + self.cloud + ", 地域: " + self.region
+        return text
 
 
 class TerraformCodeTemplate(models.Model):
     id = models.BigAutoField(primary_key=True)
     module = models.CharField(max_length=100)
+    file_name = models.CharField(max_length=100)
     block_type = models.CharField(max_length=100)
     block_label = models.CharField(max_length=100)
     block_label_name = models.CharField(max_length=100)
     block_context = models.TextField()
-    file_name = models.CharField(max_length=100)
-    env_id = models.CharField(max_length=100)
-    code_id = models.CharField(max_length=100)
+    code_template_id = models.CharField(max_length=100)
 
     def __str__(self):
         return self.block_label
 
 
-class TerraformCodes(models.Model):
+class TerraformCode(models.Model):
     id = models.BigAutoField(primary_key=True)
     data = models.JSONField()
+    env_id = models.CharField(max_length=100)
+    code_template_id = models.CharField(max_length=100)
     code_id = models.CharField(max_length=100)
 
     def __str__(self):
         return str(self.data)
+
+
+class TerraformCodeAtModule(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    src_module = models.CharField(max_length=100)
+    src_output = models.CharField(max_length=100)
+    dest_module = models.CharField(max_length=100)
+    dest_input = models.CharField(max_length=100)
+    code_template_id = models.CharField(max_length=100)
+
+    def __str__(self):
+        return str(self.dest_input)

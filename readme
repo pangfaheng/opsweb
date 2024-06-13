@@ -36,3 +36,20 @@ opsweb.settings.INSTALLED_APPS
 opsweb.urls.urlpatterns
 app.urls.urlpatterns
 app.views.def
+
+
+# terraform模型设计
+```
+TerraformEnvironmentTemplate(环境模板)      -> env_template_id
+                                                    ↑ 
+                                                    ↓
+TerraformEnvironment(环境参数)              -> env_template_id, env_id
+                                                                  ↑ 
+                                                                  ↓ 
+TerraformCode(代码参数)                     -> code_template_id, env_id, code_id
+                                                    ↑                      
+                                                    ↓                      
+TerraformCodeTemplate(代码模版)             -> code_template_id               
+                                                    ↑
+                                                    ↓
+TerraformEnvironmentAtModule(参数传递模版)   -> code_template_id
