@@ -70,3 +70,41 @@ class Book(models.Model):
 
     def __str__(self):
         return self.book_name
+
+
+class TerraformEnvironmentTemplate(models.Model):
+    environment_context = models.TextField()
+    file_name = models.CharField(max_length=100)
+    template_id = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.template_id
+
+
+class TerraformEnvironments(models.Model):
+    cloud = models.CharField(max_length=100)
+    project = models.CharField(max_length=100)
+    version = models.CharField(max_length=100)
+    region = models.CharField(max_length=100)
+    source = models.CharField(max_length=100)
+    backend_object_type = models.CharField(max_length=100)
+    backend_object_name = models.CharField(max_length=100)
+    template_id = models.CharField(max_length=100)
+    env_id = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.env_id
+
+
+class TerraformCodeTemplate(models.Model):
+    module = models.CharField(max_length=100)
+    block_type = models.CharField(max_length=100)
+    block_label = models.CharField(max_length=100)
+    block_label_name = models.CharField(max_length=100)
+    block_context = models.TextField()
+    file_name = models.CharField(max_length=100)
+    env_id = models.CharField(max_length=100)
+    code_id = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.block_label
