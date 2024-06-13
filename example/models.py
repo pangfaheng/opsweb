@@ -73,6 +73,7 @@ class Book(models.Model):
 
 
 class TerraformEnvironmentTemplate(models.Model):
+    id = models.BigAutoField(primary_key=True)
     environment_context = models.TextField()
     file_name = models.CharField(max_length=100)
     template_id = models.CharField(max_length=100)
@@ -82,6 +83,7 @@ class TerraformEnvironmentTemplate(models.Model):
 
 
 class TerraformEnvironments(models.Model):
+    id = models.BigAutoField(primary_key=True)
     cloud = models.CharField(max_length=100)
     project = models.CharField(max_length=100)
     version = models.CharField(max_length=100)
@@ -97,6 +99,7 @@ class TerraformEnvironments(models.Model):
 
 
 class TerraformCodeTemplate(models.Model):
+    id = models.BigAutoField(primary_key=True)
     module = models.CharField(max_length=100)
     block_type = models.CharField(max_length=100)
     block_label = models.CharField(max_length=100)
@@ -108,3 +111,12 @@ class TerraformCodeTemplate(models.Model):
 
     def __str__(self):
         return self.block_label
+
+
+class TerraformCodes(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    data = models.JSONField()
+    code_id = models.CharField(max_length=100)
+
+    def __str__(self):
+        return str(self.data)
