@@ -137,3 +137,13 @@ class TerraformCodeAtModule(models.Model):
 
     def __str__(self):
         return str(self.dest_input)
+
+
+class TerraformCodeOutput(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    type = models.CharField(max_length=100)
+    code_id = models.CharField(max_length=100)
+
+    def __str__(self):
+        return str(self.name)
