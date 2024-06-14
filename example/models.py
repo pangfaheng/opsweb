@@ -134,16 +134,19 @@ class TerraformCodeAtModule(models.Model):
     dest_module = models.CharField(max_length=100)
     dest_input = models.CharField(max_length=100)
     code_template_id = models.CharField(max_length=100)
+    at_module_id = models.CharField(max_length=100)
 
     def __str__(self):
         return str(self.dest_input)
 
 
-class TerraformCodeOutput(models.Model):
+class TerraformOutputCode(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=100)
-    type = models.CharField(max_length=100)
+    output_type = models.CharField(max_length=100)
     code_id = models.CharField(max_length=100)
+    at_module_id = models.CharField(max_length=100)
+    output_id = models.CharField(max_length=100)
 
     def __str__(self):
         return str(self.name)
