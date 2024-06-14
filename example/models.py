@@ -96,6 +96,7 @@ class TerraformEnvironment(models.Model):
     backend_region = models.CharField(max_length=100)
     env_template_id = models.CharField(max_length=100)
     env_id = models.CharField(max_length=100)
+    status = models.BooleanField()
 
     def __str__(self):
         text = "项目: " + self.project + ", 云服务: " + self.cloud + ", 地域: " + self.region
@@ -119,6 +120,7 @@ class TerraformCodeTemplate(models.Model):
 class TerraformCode(models.Model):
     id = models.BigAutoField(primary_key=True)
     data = models.JSONField()
+    status = models.BooleanField()
     env_id = models.CharField(max_length=100)
     code_template_id = models.CharField(max_length=100)
     code_id = models.CharField(max_length=100)
@@ -133,6 +135,7 @@ class TerraformCodeAtModule(models.Model):
     src_output = models.CharField(max_length=100)
     dest_module = models.CharField(max_length=100)
     dest_input = models.CharField(max_length=100)
+    status = models.BooleanField()
     code_template_id = models.CharField(max_length=100)
     at_module_id = models.CharField(max_length=100)
 
@@ -144,6 +147,7 @@ class TerraformOutputCode(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=100)
     output_type = models.CharField(max_length=100)
+    status = models.BooleanField()
     code_id = models.CharField(max_length=100)
     at_module_id = models.CharField(max_length=100)
     output_id = models.CharField(max_length=100)
