@@ -5,7 +5,7 @@ from .models import (
     TerraformEnvironment,
     TerraformCodeTemplate,
     TerraformCode,
-    TerraformCodeAtModule,
+    TerraformOutputAtModule,
     TerraformOutputCode,
 )
 
@@ -14,5 +14,5 @@ admin.site.register(TerraformEnvironmentTemplate)
 admin.site.register(TerraformEnvironment)
 admin.site.register(TerraformCodeTemplate)
 admin.site.register(TerraformCode)
-admin.site.register(TerraformCodeAtModule)
+admin.site.register(TerraformOutputAtModule)
 admin.site.register(TerraformOutputCode)

@@ -26,5 +26,15 @@ urlpatterns = [
     re_path(r"^(?P<pk>\d+)/$", views.task_detail, name="task_detail"),
     re_path(r"^(?P<pk>\d+)/update/$", views.task_update, name="task_update"),
     re_path(r"^(?P<pk>\d+)/delete/$", views.task_delete, name="task_delete"),
+    path(
+        "terraform/home",
+        views.terraform_home,
+        name="terraform_home",
+    ),
+    path(
+        "terraform/create_template",
+        views.terraform_create_template,
+        name="terraform_create_template",
+    ),
 ]
 urlpatterns += staticfiles_urlpatterns()

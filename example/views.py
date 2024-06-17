@@ -9,6 +9,7 @@ from django.http import Http404
 from example.forms import TaskListForm
 from example.models import TaskList
 from django.urls import reverse
+from django.views.decorators.cache import never_cache
 
 
 def home(request):
@@ -138,3 +139,41 @@ def task_delete(request, pk):
     task_obj = get_object_or_404(TaskList, pk=pk)
     task_obj.delete()
     return redirect(reverse("task_list"))
+
+
+@never_cache
+def terraform_home(request):
+    return render(request, "example/terraform_home.html")
+
+
+def terraform_select(request):
+    pass
+
+
+@never_cache
+def terraform_create_template(request):
+    return render(request, "example/terraform_create_template.html")
+
+
+def terraform_delete(request):
+    pass
+
+
+def terraform_update(request):
+    pass
+
+
+def terraform_new(request):
+    pass
+
+
+def terraform_check(request):
+    pass
+
+
+def terraform_plan(request):
+    pass
+
+
+def terraform_apply(request):
+    pass

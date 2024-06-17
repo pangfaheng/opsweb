@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'example/base.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'example/dark_mode.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'example/nav_sidebar.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'example/dashboard.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'example/responsive.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'example/special.css' %}"/>
+</head>
+<body>
+    <div id="container">
+        <div>
+            <header id="header">
+                <div id="branding">
+                    <div id="site-name">
+                        <strong>
+                            <a>
+                                Terraform项目管理
+                            </a>
+                        </strong>
+                    </div>
+                </div>
+                <div id="user-tools">
+                    Welcome / 
+                    <a href="{% url 'example_home' %}">返回主目录</a> /
+                    <a href="/admin">后台管理</a>
+                </div>
+            </header>
+        </div>
+        <div>
+            <nav aria-label="Breadcrumbs">
+                <div class="breadcrumbs">
+                    <a href="{% url 'example_home' %}">
+                        主目录
+                    </a>
+                    › 
+                    <a href="{% url 'terraform_home' %}">
+                        Terraform项目管理
+                    </a>
+                </div>
+            </nav>
+            <main>
+                <div class="special-container">
+                    <div class="special-box">
+                        <a>项目管理</a>
+                    </div>
+                    <div class="special-box">
+                        <a href="{% url 'terraform_create_template' %}">
+                            创建模版
+                        </a>
+                    </div>
+                    <div class="special-box">
+                        <a>添加内容</a>
+                    </div>
+                    <div class="special-box">
+                        <a>检查代码</a>
+                    </div>
+                    <div class="special-box">
+                        <a>测试代码</a>
+                    </div>
+                    <div class="special-box">
+                        <a>执行任务</a>
+                    </div>
+                    <div class="special-box">
+                        <a>导出数据</a>
+                    </div>
+                </div>
+            </main>
+        </div>
+    <div>
+</body>
+</html>

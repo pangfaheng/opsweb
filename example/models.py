@@ -129,7 +129,7 @@ class TerraformCode(models.Model):
         return str(self.data)
 
 
-class TerraformCodeAtModule(models.Model):
+class TerraformOutputAtModule(models.Model):
     id = models.BigAutoField(primary_key=True)
     src_module = models.CharField(max_length=100)
     src_output = models.CharField(max_length=100)
