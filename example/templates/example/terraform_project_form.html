@@ -1,0 +1,67 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'example/base.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'example/dark_mode.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'example/nav_sidebar.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'example/dashboard.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'example/responsive.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'example/special.css' %}"/>
+</head>
+<body>
+    <div id="container">
+        <div>
+            <header id="header">
+                <div id="branding">
+                    <div id="site-name">
+                        <strong>
+                            <a>
+                                云资产管理
+                            </a>
+                        </strong>
+                    </div>
+                </div>
+                <div id="user-tools">
+                    Welcome / 
+                    <a href="{% url 'example_home' %}">返回主目录</a> /
+                    <a href="/admin">后台管理</a>
+                </div>
+            </header>
+        </div>
+        <div>
+            <nav aria-label="Breadcrumbs">
+                <div class="breadcrumbs">
+                    <a href="{% url 'example_home' %}">
+                        主目录
+                    </a>
+                    › 
+                    <a href="{% url 'terraform_home' %}">
+                        云资产管理
+                    </a>
+                    › 
+                    <a href="{% url 'terraform_home' %}">
+                        项目信息管理
+                    </a>
+                </div>
+            </nav>
+            <h3>{% if object %} 修改项目配置 {% else %} 创建新项目 {% endif %}</h3>
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <p><input type="submit" class="btn btn-success" value="Submit"></p>
+            </form>
+        </div>
+    <div>
+</body>
+</html>
+
+
+
+
+
+

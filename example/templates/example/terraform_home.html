@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'example/responsive.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'example/special.css' %}"/>
 </head>
-<body>
+<body class=" dashboard app-example" data-admin-utc-offset="0">
     <div id="container">
         <div>
             <header id="header">
@@ -18,7 +18,7 @@
                     <div id="site-name">
                         <strong>
                             <a>
-                                Terraform项目管理
+                                云资产管理
                             </a>
                         </strong>
                     </div>
@@ -38,37 +38,74 @@
                     </a>
                     › 
                     <a href="{% url 'terraform_home' %}">
-                        Terraform项目管理
+                        云资产管理
                     </a>
                 </div>
             </nav>
-            <main>
-                <div class="special-container">
-                    <div class="special-box">
-                        <a>项目管理</a>
+            <div class="main" id="main">
+                <main id="content-start" class="content" tabindex="-1">
+                    <div id="content" class="colMS">
+                        <div id="content-main">
+                            <div class="app-example module current-app">
+                        <table>
+                            <caption>
+                                <h2 class="section">操作列表</h2>
+                            </caption>
+                                <tr>
+                                    <th scope="row">
+                                        <a href="{% url 'terraform_project_list' %}">
+                                            项目信息
+                                        </a>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <a href="{% url 'terraform_create_template' %}">
+                                            创建模版
+                                        </a>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <a href="{% url 'terraform_project_list' %}">
+                                            添加内容
+                                        </a>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <a href="{% url 'terraform_project_list' %}">
+                                            检查代码
+                                        </a>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <a href="{% url 'terraform_project_list' %}">
+                                            测试代码
+                                        </a>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <a href="{% url 'terraform_project_list' %}">
+                                            执行任务
+                                        </a>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <a href="{% url 'terraform_project_list' %}">
+                                            导出数据
+                                        </a>
+                                    </th>
+                                </tr>
+                        </table>
                     </div>
-                    <div class="special-box">
-                        <a href="{% url 'terraform_create_template' %}">
-                            创建模版
-                        </a>
-                    </div>
-                    <div class="special-box">
-                        <a>添加内容</a>
-                    </div>
-                    <div class="special-box">
-                        <a>检查代码</a>
-                    </div>
-                    <div class="special-box">
-                        <a>测试代码</a>
-                    </div>
-                    <div class="special-box">
-                        <a>执行任务</a>
-                    </div>
-                    <div class="special-box">
-                        <a>导出数据</a>
                     </div>
                 </div>
-            </main>
+                </main>
+            </div>
         </div>
     <div>
 </body>

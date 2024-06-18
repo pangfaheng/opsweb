@@ -32,6 +32,31 @@ urlpatterns = [
         name="terraform_home",
     ),
     path(
+        "terraform/project",
+        views.terraform_project_list,
+        name="terraform_project_list",
+    ),
+    path(
+        "terraform/create_project",
+        views.terraform_create_project,
+        name="terraform_create_project",
+    ),
+    re_path(
+        r"^(?P<project_id>\d+)/$",
+        views.terraform_detail_project,
+        name="terraform_detail_project",
+    ),
+    re_path(
+        r"^(?P<project_id>\d+)/update/$",
+        views.terraform_update_project,
+        name="terraform_update_project",
+    ),
+    re_path(
+        r"^(?P<project_id>\d+)/delete/$",
+        views.terraform_delete_project,
+        name="terraform_delete_project",
+    ),
+    path(
         "terraform/create_template",
         views.terraform_create_template,
         name="terraform_create_template",

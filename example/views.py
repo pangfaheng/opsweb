@@ -6,8 +6,8 @@ from django.conf import settings
 from django.http import HttpResponse, FileResponse
 from django.core.files.storage import FileSystemStorage
 from django.http import Http404
-from example.forms import TaskListForm
-from example.models import TaskList
+from example.forms import TaskListForm, TerraformProjectForm
+from example.models import TaskList, TerraformProject
 from django.urls import reverse
 from django.views.decorators.cache import never_cache
 
@@ -146,6 +146,121 @@ def terraform_home(request):
     return render(request, "example/terraform_home.html")
 
 
+@never_cache
+def terraform_project_list(request):
+    queryset = TerraformProject.objects.filter().order_by("id")
+    data = TerraformProject.objects.all()
+    paginator = Paginator(queryset, 10)
+    page = request.GET.get("page")
+    try:
+        page_obj = paginator.page(page)
+    except PageNotAnInteger:
+        page_obj = paginator.page(1)
+    except EmptyPage:
+        page_obj = paginator.page(paginator.num_pages)
+    is_paginated = True if paginator.num_pages > 1 else False
+    context = {
+        "page_obj": page_obj,
+        "is_paginated": is_paginated,
+        "data": data,
+        "server_total": __server_assets_total(data=data),
+    }
+    return render(request, "example/terraform_project_list.html", context)
+
+
+@never_cache
+def terraform_create_project(request):
+    if request.method == "POST":
+        form = TerraformProjectForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(
+                reverse(
+                    "terraform_home",
+                )
+            )
+    else:
+        form = TerraformProjectForm()
+    return render(
+        request,
+        "example/terraform_create_project.html",
+        {
+            "form": form,
+        },
+    )
+
+
+@never_cache
+def terraform_detail_project(request):
+    if request.method == "POST":
+        form = TerraformProjectForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(
+                reverse(
+                    "terraform_home",
+                )
+            )
+    else:
+        form = TerraformProjectForm()
+    return render(
+        request,
+        "example/terraform_create_project.html",
+        {
+            "form": form,
+        },
+    )
+
+
+@never_cache
+def terraform_update_project(request, pk):
+    project_obj = get_object_or_404(TerraformProject, pk=pk)
+    if request.method == "POST":
+        form = TerraformProjectForm(instance=project_obj, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(
+                reverse(
+                    "terraform_update_project",
+                    args=[
+                        pk,
+                    ],
+                )
+            )
+    else:
+        form = TaskListForm(instance=project_obj)
+    return render(
+        request,
+        "example/terraform_update_project.html",
+        {"form": form, "object": project_obj},
+    )
+
+
+@never_cache
+def terraform_delete_project(request, pk):
+    project_obj = get_object_or_404(TerraformProject, pk=pk)
+    if request.method == "POST":
+        form = TerraformProjectForm(instance=project_obj, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(
+                reverse(
+                    "terraform_delete_project",
+                    args=[
+                        pk,
+                    ],
+                )
+            )
+    else:
+        form = TaskListForm(instance=project_obj)
+    return render(
+        request,
+        "example/terraform_delete_project.html",
+        {"form": form, "object": project_obj},
+    )
+
+
+@never_cache
 def terraform_select(request):
     pass
 
@@ -155,22 +270,27 @@ def terraform_create_template(request):
     return render(request, "example/terraform_create_template.html")
 
 
+@never_cache
 def terraform_delete(request):
     pass
 
 
+@never_cache
 def terraform_update(request):
     pass
 
 
+@never_cache
 def terraform_new(request):
     pass
 
 
+@never_cache
 def terraform_check(request):
     pass
 
 
+@never_cache
 def terraform_plan(request):
     pass
 

@@ -7,6 +7,7 @@ from .models import (
     TerraformCode,
     TerraformOutputAtModule,
     TerraformOutputCode,
+    TerraformProject,
 )
 
 # Register your models here.
@@ -16,3 +17,4 @@ admin.site.register(TerraformCodeTemplate)
 admin.site.register(TerraformCode)
 admin.site.register(TerraformOutputAtModule)
 admin.site.register(TerraformOutputCode)
+admin.site.register(TerraformProject)

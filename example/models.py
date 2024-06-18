@@ -72,11 +72,32 @@ class Book(models.Model):
         return self.book_name
 
 
+class TerraformCloudList(models.TextChoices):
+    ALICLOUD = "alicloud", "阿里云"
+    TENCENTCLOUD = "tencentcloud", "腾讯云"
+    HUAWEICLOUD = "huaweicloud", "华为云"
+
+
+class TerraformProject(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    cloud = models.CharField(
+        verbose_name="云厂商", max_length=100, choices=TerraformCloudList.choices
+    )
+    project_name = models.CharField(verbose_name="项目名称", max_length=100)
+    project_id = models.CharField(verbose_name="项目ID", max_length=100)
+    area = models.CharField(verbose_name="区域", max_length=300)
+
+    def __str__(self):
+        text = self.project_name
+        return text
+
+
 class TerraformEnvironmentTemplate(models.Model):
     id = models.BigAutoField(primary_key=True)
     environment_context = models.TextField()
     file_name = models.CharField(max_length=100)
     remark = models.CharField(max_length=300)
+    project_id = models.CharField(max_length=100)
     env_template_id = models.CharField(max_length=100)
 
     def __str__(self):
