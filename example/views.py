@@ -149,8 +149,7 @@ def terraform_home(request):
 @never_cache
 def terraform_project_list(request):
     queryset = TerraformProject.objects.filter().order_by("id")
-    data = TerraformProject.objects.all()
-    paginator = Paginator(queryset, 10)
+    paginator = Paginator(queryset, 5)
     page = request.GET.get("page")
     try:
         page_obj = paginator.page(page)
@@ -162,8 +161,6 @@ def terraform_project_list(request):
     context = {
         "page_obj": page_obj,
         "is_paginated": is_paginated,
-        "data": data,
-        "server_total": __server_assets_total(data=data),
     }
     return render(request, "example/terraform_project_list.html", context)
 

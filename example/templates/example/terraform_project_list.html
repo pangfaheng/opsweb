@@ -1,109 +1,74 @@
+{% extends "example/terraform.html" %}
+{% block terraform_index %}
+<nav aria-label="Breadcrumbs">
+    <div class="breadcrumbs">
+        <a href="{% url 'example_home' %}">
+            主目录
+        </a>
+        › 
+        <a href="{% url 'terraform_home' %}">
+            云资产管理
+        </a>
+        › 
+        <a href="{% url 'terraform_project_list' %}">
+            项目信息
+        </a>
+    </div>
+</nav>
+{% endblock %}
 
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'example/base.css' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static 'example/dark_mode.css' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static 'example/nav_sidebar.css' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static 'example/dashboard.css' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static 'example/responsive.css' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static 'example/special.css' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static 'example/site.css' %}"/>
-</head>
-<body>
-    <div id="container">
-        <div>
-            <header id="header">
-                <div id="branding">
-                    <div id="site-name">
-                        <strong>
-                            <a>
-                                云资产管理
-                            </a>
-                        </strong>
-                    </div>
-                </div>
-                <div id="user-tools">
-                    Welcome / 
-                    <a href="{% url 'example_home' %}">返回主目录</a> /
-                    <a href="/admin">后台管理</a>
-                </div>
-            </header>
-        </div>
-        <div>
-            <nav aria-label="Breadcrumbs">
-                <div class="breadcrumbs">
-                    <a href="{% url 'example_home' %}">
-                        主目录
-                    </a>
-                    › 
-                    <a href="{% url 'terraform_home' %}">
-                        云资产管理
-                    </a>
-                    › 
-                    <a href="{% url 'terraform_home' %}">
-                        项目信息
-                    </a>
-                </div>
-            </nav>
-            <div>
-                <table>
-                    <caption>
-                        <h2>项目列表</h2>
-                    </caption>
-                    <thead>
-                        <tr>
-                            <th><h3>后台编号</h3></th>
-                            <th><h3>云厂商</h3></th>
-                            <th><h3>项目名称</h3></th>
-                            <th><h3>项目ID</h3></th>
-                            <th><h3>区域</h3></th>
-                        </tr>
-                    </thead>
-                    {% for projects in page_obj %}
-                    <tbody>
-                        <tr>
-                            <td>{{ projects.id }}</td>
-                            <td>{{ projects.cloud }}</td>
-                            <td>{{ projects.project_name }}</td>
-                            <td>{{ projects.project_id }}</td>
-                            <td>{{ projects.area }}</td>
-                            <td><a href="{% url 'task_update' projects.id %}">Update</a></td>
-                            <td><a href="{% url 'task_delete' projects.id %}">Delete</a></td>
-                        </tr>
-                    </tbody>
-                    {% endfor %}
-                </table>
-                <p><a href="{% url 'task_create' %}"> + Add A New Task</a></p>
-            </div>
-            {% if is_paginated %}
-            <ul class="pagination">
-                {% if page_obj.has_previous %}
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" >Previous</a>
-                </li>
-                {% else %}
-                <li class="page-item disabled"><span class="page-link">Previous</span></li>
-                {% endif %}
-                {% for i in page_obj.paginator.page_range %}
-                    {% if page_obj.number == i %}
-                    <li class="page-item active"><span class="page-link"> {{ i }} <span class="sr-only">(current)</span></span></li>
-                    {% else %}
-                    <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
-                    {% endif %}
-                {% endfor %}
-                {% if page_obj.has_next %}
-                <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
-                {% else %}
-                <li class="page-item disabled"><span class="page-link">Next</span></li>
-                {% endif %}
-            </ul>
-            {% endif %}
-        </div>
-    <div>
-</body>
-</html>
+{% block terraform_content %}
+<div>
+    <table>
+        <caption>
+            <h2>项目列表</h2>
+        </caption>
+        <thead>
+            <tr>
+                <th><h3>后台编号</h3></th>
+                <th><h3>云厂商</h3></th>
+                <th><h3>项目名称</h3></th>
+                <th><h3>项目ID</h3></th>
+                <th><h3>区域</h3></th>
+            </tr>
+        </thead>
+        {% for projects in page_obj %}
+        <tbody>
+            <tr>
+                <td>{{ projects.id }}</td>
+                <td>{{ projects.cloud }}</td>
+                <td>{{ projects.project_name }}</td>
+                <td>{{ projects.project_id }}</td>
+                <td>{{ projects.area }}</td>
+                <td><a href="{% url 'task_update' projects.id %}">Update</a></td>
+                <td><a href="{% url 'task_delete' projects.id %}">Delete</a></td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+    <p><a href="{% url 'task_create' %}"> + Add A New Task</a></p>
+</div>
+{% if is_paginated %}
+<ul class="pagination">
+    {% if page_obj.has_previous %}
+    <li class="page-item">
+        <a class="page-link" href="?page={{ page_obj.previous_page_number }}" >Previous</a>
+    </li>
+    {% else %}
+    <li class="page-item disabled"><span class="page-link">Previous</span></li>
+    {% endif %}
+    {% for i in page_obj.paginator.page_range %}
+        {% if page_obj.number == i %}
+        <li class="page-item active"><span class="page-link"> {{ i }} <span class="sr-only">(current)</span></span></li>
+        {% else %}
+        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+        {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+    <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+    {% else %}
+    <li class="page-item disabled"><span class="page-link">Next</span></li>
+    {% endif %}
+</ul>
+{% endif %}
+{% endblock %}

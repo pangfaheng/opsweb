@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'example/base.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'example/dark_mode.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'example/nav_sidebar.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'example/dashboard.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'example/responsive.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'example/special.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'example/site.css' %}"/>
+</head>
+<body>
+    <div id="container">
+        <div>
+            <header id="header">
+                <div id="branding">
+                    <div id="site-name">
+                        <strong>
+                            <a>
+                                云资产管理
+                            </a>
+                        </strong>
+                    </div>
+                </div>
+                <div id="user-tools">
+                    Welcome / 
+                    <a href="{% url 'example_home' %}">返回主目录</a> /
+                    <a href="/admin">后台管理</a>
+                </div>
+            </header>
+        </div>
+        <div>
+            {% block terraform_index %}
+            {% endblock %}
+            {% block terraform_content %}
+            {% endblock %}
+        </div>
+    <div>
+</body>
+</html>
