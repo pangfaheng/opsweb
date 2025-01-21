@@ -12,6 +12,11 @@
 <div class="navbar">
     <a href="{% url 'sysadmin_home' %}" class="navbar-item">主目录</a>
     <a href="{% url 'sysadmin_server_assets' %}" class="navbar-item">服务器列表</a>
+    {% if user.is_authenticated %}
+        <a class="navbar-item logout" href="{% url 'logout' %}">退出登录</a>
+    {% else %}
+        <a class="navbar-item" href="{% url 'login' %}">登录</a>
+    {% endif %}
 </div>
 
 <div class="body-content">
