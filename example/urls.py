@@ -4,6 +4,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path("", views.home, name="example_home"),
+    path("../", views.to_root_home, name="to_root_home"),
     path("previous", views.previous, name="previous"),
     path("file_manager", views.file_manager, name="file_manager"),
     path(

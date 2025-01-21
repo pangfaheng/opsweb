@@ -19,6 +19,11 @@
     {% endif %}
 </div>
 
+<div class="sidenav">
+    <a href="{% url 'sysadmin_home' %}" class="navbar-item">主目录</a>
+    <a href="{% url 'sysadmin_server_assets' %}" class="navbar-item">服务器列表</a>
+</div>
+
 <div class="body-content">
     {% block content %}{% endblock %}
     <hr/>
@@ -26,5 +31,6 @@
         <p>&copy;2024</p>
     </footer>
 </div>
+
 </body>
 </html>

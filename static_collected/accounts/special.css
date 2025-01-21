@@ -1,0 +1,50 @@
+.special-square-box {
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.special-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto;
+    gap: 20px;
+    align-items: center;
+    height: 200px;
+}
+
+.special-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    border-radius: 30px;
+    --link-fg: rgb(240, 240, 240);
+    color: rgb(240, 240, 240);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: rgb(64, 64, 64);
+}
+
+.special-index-table {
+    text-align: left;
+}

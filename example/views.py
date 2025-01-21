@@ -12,6 +12,10 @@ from django.urls import reverse
 from django.views.decorators.cache import never_cache
 
 
+def to_root_home(request):
+    return redirect(request, "sysadmin/home.html")
+
+
 def home(request):
     return render(request, "example/home.html")
 

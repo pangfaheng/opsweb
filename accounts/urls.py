@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import login_view, logout_view
+from accounts import views
 
 urlpatterns = [
-    path("login/", login_view, name="login"),
-    path("logout/", logout_view, name="logout"),  # 退出登录页面
+    path("login/", views.login_view, name="login"),  # 登录页面
+    path("logout/", views.logout_view, name="logout"),  # 退出登录页面
 ]
