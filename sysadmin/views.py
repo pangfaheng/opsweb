@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from sysadmin.models import instance_base_info
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth.decorators import login_required
 
 
+@login_required
 def sysadmin_home(request):
     return render(request, "sysadmin/home.html")
 

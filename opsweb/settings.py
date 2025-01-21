@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "hello",
     "sysadmin",
     "example",
+    "accounts",
 ]
 
 MIDDLEWARE = [
@@ -131,3 +132,6 @@ STATIC_ROOT = BASE_DIR / "static_collected"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 MEDIA_URL = "/media/"
+
+# 登陆路径
+LOGIN_URL = 'login'
