@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "sysadmin",
     "example",
     "accounts",
+    "apps.home",
 ]
 
 MIDDLEWARE = [
@@ -134,4 +135,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
 
 # 登陆路径
-LOGIN_URL = 'login'
+LOGIN_URL = "login"
