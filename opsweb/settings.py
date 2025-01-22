@@ -38,11 +38,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "hello",
-    "sysadmin",
-    "example",
-    "accounts",
     "apps.home",
+    "apps.authentication",
 ]
 
 MIDDLEWARE = [
@@ -128,7 +125,7 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-STATIC_ROOT = BASE_DIR / "static_collected"
+# STATIC_ROOT = BASE_DIR / "static_collected"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
