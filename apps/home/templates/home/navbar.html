@@ -1,0 +1,10 @@
+<!-- 导航栏 -->
+<div class="navbar">
+    <a href="{% url 'home' %}" class="navbar-item">主目录</a>
+    {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}" class="navbar-item logout">退出登录</a>
+    {% else %}
+        <a href="{% url 'login' %}" class="navbar-item">登录</a>
+    {% endif %}
+</div>
+<div class="body-content">
