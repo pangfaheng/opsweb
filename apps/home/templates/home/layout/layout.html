@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            {% load static %}
+            <link rel="stylesheet" type="text/css" href="{% static 'home/site.css' %}"/>
+    </head>
+<body>
+    <!-- 标签 -->
+    <div id="title">
+        {% block title %}
+        {% endblock %}
+    </div>
+
+    <!-- 侧边栏 -->
+    <div class="container">
+        <div id="sidebar" class="sidebar">
+            {% block sidebar %}
+                {% include "home/layout/sidebar.html" %}
+            {% endblock%}
+        </div>
+        <div >
+            <nav id="navbar" class="navbar">
+                <!-- 导航栏 -->
+                {% block navbar %}
+                    {% include "home/layout/navbar.html" %}
+                {% endblock%}
+            </nav>
+            <!-- 内容栏 -->
+            <div id="context">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+    <!-- 页脚栏 -->
+    <div id="footer">
+        {% block footer %}
+            {% include "home/layout/footer.html" %}
+        {% endblock %}
+    </div>
+</body>
+</html>
+
+

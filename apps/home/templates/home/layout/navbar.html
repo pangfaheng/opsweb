@@ -1,0 +1,6 @@
+<a href="{% url 'home' %}" class="navbar">主目录</a>
+{% if user.is_authenticated %}
+    <a href="{% url 'logout' %}" class="navbar">退出登录</a>
+{% else %}
+    <a href="{% url 'login' %}" class="navbar">登录</a>
+{% endif %}
