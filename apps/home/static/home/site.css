@@ -38,3 +38,15 @@ footer {
     text-decoration: none;
     color: inherit;
 }
+
+ul {
+    list-style-type: none;
+    /* 去掉圆点 */
+    padding-left: 0;
+    /* 去掉左侧的内边距 */
+}
+
+li {
+    margin-bottom: 10px;
+    /* 给每个列表项加点间距 */
+}
